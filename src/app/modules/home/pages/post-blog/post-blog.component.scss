@@ -1,0 +1,28 @@
+.share-button {
+  margin-top: 3px;
+  margin-right: 3px;
+  float: right;
+  height: 32px;
+  background-color: rgb(10, 102, 194);
+  color: rgb(255, 255, 255);
+  font-family: system-ui, -apple-system;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+  border: 1px solid rgb(10, 102, 194);
+  border-radius: 20px;
+
+  &:hover {
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    background-color: #004182;
+  }
+
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid transparent;
+    color: rgba(0, 0, 0, 0.3);
+  }
+}

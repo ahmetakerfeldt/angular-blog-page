@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <span class="select-image-text">Select Image</span>
+  <button (click)="modalService.dismiss()" type="button" class="btn-close exit-button" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+</div>
+<div class="modal-body text-center">
+  <form [formGroup]="inputForm">
+    <ng-container *ngIf="path">
+      <div id="content">
+        <textarea maxlength="1500" formControlName="content" id="content-textarea" class="textarea-style" rows="5"
+                  placeholder="Content"></textarea>
+      </div>
+      <img style="margin-top: 20px" class="post-image" [src]="path">
+    </ng-container>
+
+    <label for="image-input" class="post-image-button">Select Image</label>
+    <input id="image-input" accept=".png, .gif, .jpeg, .jpg" style="visibility:hidden;" type="file"
+           (change)="getFile($event)"
+           formenctype="multipart/form-data">
+    <p style="margin: auto; font-size: 12px; color: red; font-weight: 500" *ngIf="!unSuccess || !path">{{unSuccess}}</p>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modalService.dismiss()" class="close-button" data-bs-dismiss="modal">Close</button>
+  <button class="send-button" (click)="postImage()" [disabled]="!path">Share Image</button>
+</div>

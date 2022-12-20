@@ -1,0 +1,14 @@
+<div class="row m-0 justify-content-center">
+  <div class="col-xl-9 col-md-10 col-sm-12">
+    <div style="background-color: white">
+      <div style="background-color: rgb(245, 245, 245); height: 40px">
+        <button class="share-button" (click)="shareBlog()" [disabled]="!inputForm.valid">Share Blog</button>
+      </div>
+      <form [formGroup]="inputForm">
+        <angular-editor formControlName="html" [placeholder]="'Enter text here...'" [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
+      </form>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,357 @@
+.home-button {
+  width: 49%;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  margin-top: -10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #8b8080;
+
+  &:hover {
+    background: rgb(230, 230, 230);
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    color: #201d1d;
+    border-radius: 3px;
+  }
+}
+
+.button-box {
+  width: 100%;
+  height: 40px;
+  margin-top: -5px;
+}
+
+.post-box {
+  border: 1px solid transparent;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  background: white
+
+}
+
+.pp-style {
+  object-fit: cover;
+  position: relative;
+  width: 48px;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.profile-name {
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 20px;
+  font-family: -apple-system, system-ui;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.createdAt {
+  position: absolute;
+  margin-top: -8px !important;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: system-ui, -apple-system;
+  font-size: 12px;
+  height: 15.9875px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.paragraph-style {
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.9);
+  font-family: -apple-system, system-ui, blinkMacSystem;
+  word-break: break-word;
+  vertical-align: baseline;
+  line-height: 20px;
+  font-weight: 350;
+  padding-left: 10px;
+  font-size: 14px;
+  padding-right: 4px
+}
+
+.post-image-style {
+  object-fit: cover;
+  padding: 0 !important;
+  width: 100%;
+  margin-top: 10px
+}
+
+.likes-style {
+  margin-left: 3px;
+  font-size: 14px;
+  color: #373030;
+  font-weight: 350;
+}
+
+.comment-style {
+  resize: none;
+  width: 70%;
+  height: 40px;
+  border-radius: 30px;
+  border: 1px solid rgb(200, 200, 200);
+  padding-top: 5px;
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 400;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.comment-box {
+  margin-top: 5px;
+  padding-bottom: 3px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+.comment-pp {
+  object-fit: cover;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.send-btn {
+  margin-right: 20px !important;
+  width: 70px;
+  height: 40px;
+  background-color: rgb(10, 102, 194);
+  color: rgb(255, 255, 255);
+  font-family: system-ui, -apple-system;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 18px;
+  border: 1px solid rgb(10, 102, 194);
+  border-radius: 20px;
+
+  &:hover {
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    background-color: #004182;
+  }
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid transparent;
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .res-box-style {
+    width: 75% !important;
+  }
+  .response-input {
+    width: 70% !important;
+  }
+
+  .comm-pp-style {
+    object-fit: cover;
+    position: relative;
+    width: 40px !important;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 40px !important;
+    border-radius: 50%;
+  }
+  .comment-style {
+    width: 65%;
+  }
+  .send-btn {
+    margin-right: 8px !important;
+    width: 65px !important;
+  }
+  .comment-texts {
+    width: 75% !important;
+  }
+}
+
+.more-text {
+  color: #6f6969;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+}
+
+html {
+  background: lightgrey;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bott {
+  overflow: hidden;
+  position: inherit;
+  width: 100%;
+
+  &.sticky {
+    opacity: 1;
+
+
+  }
+}
+
+.comment-text-style {
+  background-color: #f2f2f2;
+  margin-left: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-top: 10px;
+  width: 80%;
+  justify-content: space-between;
+
+  p {
+    font-weight: 100;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+}
+
+.comment-texts {
+  background-color: #f2f2f2;
+  margin-left: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-top: 10px;
+  width: 80%;
+  justify-content: space-between;
+  padding-bottom: -20px !important;
+
+  span {
+    padding-top: 8px;
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.comm-txt {
+  font-size: 14px;
+  font-weight: 350;
+  margin-top: -10px;
+  padding-left: 8px;
+}
+
+.like-response-btn {
+  margin-left: 5px;
+  color: #725e5e;
+
+  &:hover {
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    color: black;
+  }
+
+}
+
+.comm-pp-style {
+  object-fit: cover;
+  position: relative;
+  width: 48px;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.send-response-btn {
+  object-fit: cover;
+  margin-left: 5px !important;
+  width: 65px;
+  height: 40px;
+  background-color: rgb(10, 102, 194);
+  color: rgb(255, 255, 255);
+  font-family: system-ui, -apple-system;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 18px;
+  border: 1px solid rgb(10, 102, 194);
+  border-radius: 20px;
+
+  &:hover {
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    background-color: #004182;
+  }
+
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid transparent;
+    color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.response-input {
+  resize: none;
+  width: 80%;
+  height: 40px;
+  border-radius: 30px;
+  border: 1px solid rgb(200, 200, 200);
+  padding-top: 2px;
+  padding-right: 2px;
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 400;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.res-pp-style {
+  object-fit: cover;
+  position: relative;
+  width: 35px;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.res-box-style {
+  background-color: white;
+  margin-top: 5px;
+  width: 80%;
+  border: 1px solid #e1dede;
+  border-radius: 5px;
+  margin-left: 5px
+}
+
+.res-response-style {
+  margin-top: -13px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+  font-weight: 450;
+}
+
+.warning-text {
+  color: red;
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px
+}

@@ -1,0 +1,28 @@
+<div class="row m-0 justify-content-center">
+  <div class="col-xl-3 col-md-4 col-sm-6 col-12 text-center login-box">
+    <h2 style="color: white; font-family: 'Courier New',serif">Login</h2>
+    <form [formGroup]="inputForm" style="margin-top: 30px">
+      <input class="input-style" placeholder="Mail" formControlName="mail">
+
+      <div class="input-item" style="position: relative; margin-top: 30px">
+        <div>
+          <input *ngIf="eyeCloses" class=input-style placeholder="Password" type="password" formControlName="password">
+          <button *ngIf="eyeCloses" class="eye-button" (click)="eyeClose()"><i class="fa-solid fa-eye-slash"></i>
+          </button>
+
+          <input *ngIf="eyeOpens" class=input-style placeholder="Password" type="text" formControlName="password">
+          <button *ngIf="eyeOpens" class="eye-button" (click)="eyeOpen()"><i class="fa-solid fa-eye"></i></button>
+        </div>
+      </div>
+      <button class="btn" (click)="login()">Login</button>
+    </form>
+    <div class="secret-box">
+      <p style="color: #4bd04b" *ngIf="success">{{success}}</p>
+      <p style="color: #ff6a6a" *ngIf="unSuccess">{{unSuccess}}</p>
+    </div>
+
+    <p style="color: white">You don't have an account? <a style="text-decoration: none; color: #08082f"
+                                                         routerLink="/register">Register</a></p>
+
+  </div>
+</div>

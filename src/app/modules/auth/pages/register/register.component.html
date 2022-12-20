@@ -1,0 +1,35 @@
+<div class="row m-0 justify-content-center">
+  <div class="col-xl-3 col-md-4 col-sm-6 col-11 text-center register-box">
+    <h2 style="color: white; font-family: 'Courier New',serif">Create an Account</h2>
+    <form [formGroup]="inputForm" style="margin-top: 30px">
+      <input class="input-style" placeholder="Mail" formControlName="mail">
+      <input style="margin-top: 30px" class="input-style" placeholder="Username" formControlName="username">
+
+
+      <div class="input-item" style="position: relative; margin-top: 30px">
+
+        <div>
+          <input *ngIf="eyeCloses" class=input-style placeholder="Password" type="password" formControlName="password">
+          <button *ngIf="eyeCloses" class="eye-button" (click)="eyeClose()"><i class="fa-solid fa-eye-slash"></i>
+          </button>
+
+          <input *ngIf="eyeOpens" class=input-style placeholder="Password" type="text" formControlName="password">
+          <button *ngIf="eyeOpens" class="eye-button" (click)="eyeOpen()"><i class="fa-solid fa-eye"></i></button>
+        </div>
+      </div>
+      <button class="btn" (click)="register()">Register</button>
+    </form>
+    <div class="secret-box">
+      <p *ngIf="success" style="color: #4bd04b">{{success}}</p>
+      <div *ngFor="let errors of unSuccess">
+        <p style="color: #ff6a6a">{{errors}}</p>
+      </div>
+    </div>
+
+    <a style="text-decoration: none; color: white" routerLink="/login"><i class="fa-solid fa-arrow-left"></i> Go to login page</a>
+
+
+  </div>
+</div>
+
+

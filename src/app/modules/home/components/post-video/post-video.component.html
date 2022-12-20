@@ -1,0 +1,26 @@
+<div class="modal-content animate__bounceInDown">
+  <div class="modal-header">
+    <span class="select-video-text">Select Video</span>
+    <button class="btn-close exit-button" (click)="modalService.dismiss()"></button>
+  </div>
+  <div class="modal-body text-center">
+    <form [formGroup]="inputForm">
+      <ng-container>
+        <div id="contentForVideo" *ngIf="url">
+          <textarea maxlength="1500" formControlName="content" id="content-video" class="textarea-style" rows="5"
+                    placeholder="Content"></textarea>
+        </div>
+        <video [src]="url" *ngIf="format==='video' && url" style="width: 100%" controls></video>
+      </ng-container>
+
+      <label for="video-input" class="post-video-button">Select Video</label>
+      <input accept="video/mp4" id="video-input" style="visibility:hidden;" type="file" (change)="getVideo($event)"
+             formenctype="multipart/form-data">
+      <p style="margin: auto; font-size: 12px; color: red; font-weight: 500" *ngIf="!unSuccess || !url">{{unSuccess}}</p>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="close-button" (click)="modalService.dismiss()">Close</button>
+    <button class="send-button" (click)="postVideo()" [disabled]="!url">Share Video</button>
+  </div>
+</div>

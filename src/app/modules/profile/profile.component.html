@@ -1,0 +1,178 @@
+<div class="row justify-content-center m-0">
+  <div class="col-xl-7 col-12 box px-0" style="border: 1px solid black; background-color: white"
+       *ngIf="user">
+    <div>
+      <div style="text-align: center">
+        <img CoverPhoto [paths]="user.coverP" class="img-responsive img-back">
+        <img class="pp" ProfilePhoto [paths]="user.imagePath">
+        <br>
+
+        <h3 class="name">{{user.username}}</h3>
+        <h6 class="joined-at"><i>(Member since {{user.createdAt| date: 'MMMM yyyy'}})</i></h6>
+        <button class="change-button" routerLink="/profile/edit-profile">Edit Profile <i class="fa-solid fa-pen"></i>
+        </button>
+
+
+        <button class=" dropdown-toggle change-button-1" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+          Settings <i class="fa-solid fa-gears"></i>
+        </button>
+        <div class="dropdown">
+          <ul class="dropdown-menu fa-pull-right settings-dropdown">
+            <button class="settings-btn" (click)="openUsernameModal()"> Change Username <i
+              class="fa-solid fa-signature"></i>
+            </button>
+            <button class="settings-btn" (click)="openPasswordModal()">Change Password <i class="fa-solid fa-key"></i>
+            </button>
+          </ul>
+        </div>
+
+
+        <div style=" margin-top: 30px">
+          <h6 class="bio-text"><b>Biography</b></h6>
+          <hr>
+          <div class="mx-3" *ngIf="user.bio || user.gender">
+            <h6 *ngIf="user.birth" class="birth-text"><b><i class="fa-solid fa-cake-candles"></i>
+              Birthday: <span class="birth-text">{{user.birth | date: 'dd MMMM YYYY'}}</span></b></h6>
+
+            <h6 *ngIf="user.gender" class="birth-text"><b><i class="fa-solid fa-venus-mars"></i>
+              Gender: <span class="gender-text">{{user.gender}}</span></b></h6>
+          </div>
+          <hr *ngIf="user.bio && user.gender">
+
+          <p class="bio">{{user.bio}}</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <hr style="color: transparent">
+  <div class="col-12 col-xl-4 col-md-7 col-sm-8 py-1 px-0">
+    <div class="post-box">
+      <ng-container>
+        <div class="d-flex my-3"
+        >
+          <div class="post-box" style="width: 100%" *ngIf="system && !posts[0]">
+            <div style="display: flex; margin-left: 2px">
+              <!--photo-->
+              <div style="width: 60px;height: 60px">
+                <img class="pp-style"
+                     ProfilePhoto [paths]="system.pp">
+              </div>
+              <div style="width: 77%; height: 50px; text-align: left; padding-left: 4px; margin-left: 0">
+                <h6 class="profile-name">{{system.sender}}</h6>
+                <span class="createdAt">{{date | date:  'MMM d, y, h:mm:ss a'}} <br></span>
+              </div>
+
+            </div>
+            <div>
+              <p routerLink="/home" class="paragraph-style">{{system.content}}</p>
+            </div>
+            <ng-container>
+              <div>
+                <img Post [paths]="system.contentP" class="post-image-style system-pp">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+    <ng-container *ngFor="let post of posts">
+      <div class="d-flex my-3">
+        <div class="post-box" style="width: 100%">
+          <div style="display: flex; margin-left: 2px">
+            <!--photo-->
+            <div style="width: 60px;height: 60px">
+              <img class="pp-style"
+                   ProfilePhoto [paths]="user.imagePath">
+            </div>
+            <div style="width: 77%; height: 50px; text-align: left; padding-left: 4px; margin-left: 0">
+              <h6 class="profile-name">{{post.sender}}</h6>
+              <span class="createdAt">{{post.createdAt | date: 'MMM d y, h:mm a'}} <br></span>
+            </div>
+            <div class="dropdown" style="width: 11%; height: 60px">
+              <button style="float: right" class=" dropdown-toggle drp-btn" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+              </button>
+              <div class="dropdown">
+                <ul class="dropdown-menu dropdown-menu-end post-dropdown">
+                  <button class="dlt-li" (click)="deletePost(post)"> Delete Post
+                  </button>
+                  <button *ngIf="!post.title" class="dlt-li-2" (click)="openEditModal(post)">Edit Post</button>
+                </ul>
+              </div>
+            </div>
+
+
+          </div>
+          <div>
+            <p class="paragraph-style">{{post.content}}</p>
+          </div>
+          <ng-container *ngIf="post.imagePath && !post.title">
+            <div>
+              <img Post [paths]="post.imagePath" class="post-image-style">
+            </div>
+          </ng-container>
+          <ng-container *ngIf="post.title">
+            <div>
+              <img ProfilePhoto [paths]="post.imagePath" class="post-image-style">
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="post.videoPath">
+            <video [controls]="true" style="width: 100%">
+              <source Post [paths]="post.videoPath">
+            </video>
+          </ng-container>
+          <div style="margin-left: 10px; margin-top: 5px; width: 100%">
+            <span><i style="color: red" class="fa-solid fa-heart"></i></span>
+            <span popover titleHtml='Likes <i style = "color: red" class="fa-solid fa-heart"></i>' [contentHtml]="getLikesList(post)" placement="bottom"
+                  class="likes-style">{{post.likesCount}} likes</span>
+            <span (click)="getPost(post)" class="likes-style"
+                  style="float: right; margin-right: 20px">{{post.commentCount}} comment</span>
+          </div>
+          <hr style="margin-top: 8px">
+          <div class="button-box">
+            <button (click)="likePost(post); post.liked = true" *ngIf="!post.liked" style="margin-left: 4px"
+                    class="home-button"><i
+              class="fa-regular fa-heart"></i> Like
+            </button>
+            <button (click)="dislikePost(post); post.liked = false" *ngIf="post.liked" style="margin-left: 4px"
+                    class="home-button"><i
+              style="color: red" class="fa-solid fa-heart bounceIn"></i> Like
+            </button>
+            <button (click)="getPost(post)" style="margin-left: 1px" class="home-button"><i
+              class="fa-regular fa-comment"></i> Comment
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="my-3" *ngIf="user && user.birth">
+      <div class="d-flex">
+        <div class="post-box" style="width: 100%">
+          <div style="display: flex; margin-left: 2px">
+            <!--photo-->
+            <div style="width: 60px;height: 60px">
+              <img class="pp-style"
+                   ProfilePhoto [paths]="user.imagePath">
+            </div>
+            <div style="width: 77%; height: 50px; text-align: left; padding-left: 4px; margin-left: 0">
+              <h6 class="profile-name">{{user.username}}</h6>
+              <span class="createdAt">{{user.updatedAt | date:  'MMM d, yyyy'}} <br></span>
+            </div>
+          </div>
+          <div>
+            <p class="paragraph-style">{{user.gender}} was born in {{user.birth | date: 'dd MMMM YYYY'}}</p>
+          </div>
+          <div class="text-center p-2">
+            <p><i class="fa-regular fa-face-smile fa-8x"></i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

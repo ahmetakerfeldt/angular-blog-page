@@ -1,0 +1,91 @@
+<div class="row justify-content-center m-0">
+  <div class="col-12 col-xl-4 col-md-8 col-sm-12 container">
+
+    <div class="post-box my-2">
+      <div style="margin-left: 11px; margin-top: 5px">
+        <img *ngIf="user" routerLink="/profile" ProfilePhoto [paths]="user.imagePath" class="pp-post">
+        <button (click)="openPostModal()" class="post-button">Write Something...</button>
+
+        <button (click)="openImagePostModal()" class="post-buttons"><i style="color: #1919de"
+                                                                       class="fa-regular fa-image"></i>
+          Image
+        </button>
+        <button (click)="openVideoPostModal()" class="post-buttons"><i style="color: green"
+                                                                       class="fa-solid fa-video"></i>
+          Video
+        </button>
+        <button routerLink="/post-blog" class="post-buttons"><i style="color: red" class="fa-regular fa-newspaper"></i>
+          Blog
+        </button>
+        <div style="height: 3px">
+
+        </div>
+      </div>
+    </div>
+
+
+    <ng-container *ngFor="let post of allPosts">
+      <div class="d-flex my-2 px-0 col-12 px-0">
+        <div class="post-box">
+          <div class="d-flex">
+            <img class="pp-style"
+                 ProfilePhoto [paths]="post.pp">
+            <div style="position: inherit; margin-left: 7px">
+              <h6 class="profile-name">{{post.sender}}</h6>
+              <span class="createdAt">{{post.createdAt | date: 'MMM d y, h:mm a'}} <br></span>
+            </div>
+
+          </div>
+          <div>
+            <p class="paragraph-style">{{post.content}}</p>
+          </div>
+          <ng-container *ngIf="post.imagePath && !post.title">
+            <div>
+              <img Post [paths]="post.imagePath" class="img-responsive post-image-style">
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="post.title">
+            <div>
+              <img ProfilePhoto [paths]="post.imagePath" class="post-image-style">
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="post.videoPath">
+            <video [controls]="true" style="width: 100%">
+              <source Post [paths]="post.videoPath">
+            </video>
+          </ng-container>
+
+          <div style="margin-left: 10px; margin-top: 5px; width: 100%">
+            <span><i style="color: red" class="fa-solid fa-heart"></i></span>
+
+
+            <span popover titleHtml= 'Likes <i style = "color: red" class="fa-solid fa-heart"></i>' [contentHtml]="getLikesList(post)" placement="top" class="likes-style">{{post.likesCount}} likes</span>
+            <span (click)="getPost(post)" class="likes-style"
+                  style="float: right; margin-right: 20px">{{post.commentCount}} comment</span>
+          </div>
+          <hr style="margin-top: 8px">
+          <div class="button-box">
+            <button *ngIf="!post.liked" (click)="like(post); post.liked = true" style="margin-left: 4px"
+                    class="home-button"><i class="fa-regular fa-heart"></i> Like
+            </button>
+            <button (click)="dislike(post); post.liked = false" *ngIf="post.liked" style="margin-left: 4px"
+                    class="home-button"><i style="color: red" class="fa-solid fa-heart bounceIn"></i> Like
+            </button>
+
+
+            <button (click)="getPost(post)" style="margin-left: 1px" class="home-button"><i
+              class="fa-regular fa-comment"></i> Comment
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+
+
+

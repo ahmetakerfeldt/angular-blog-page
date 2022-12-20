@@ -1,0 +1,56 @@
+<div class="row justify-content-center m-0">
+  <div class="col-11 col-xl-4 col-md-8 col-sm-8 px-0">
+    <ng-container *ngFor="let post of photos">
+      <div class="d-flex my-3">
+        <div class="post-box">
+          <div class="d-flex">
+            <img class="pp-style"
+                 ProfilePhoto [paths]="post.pp">
+            <div style="position: inherit; margin-left: 7px">
+              <h6 class="profile-name">{{post.sender}}</h6>
+              <span class="createdAt">{{post.createdAt | date: 'MMM d y, h:mm a'}} <br></span>
+            </div>
+          </div>
+          <div>
+            <p class="paragraph-style">{{post.content}}</p>
+          </div>
+          <ng-container *ngIf="post.imagePath && !post.title">
+            <div>
+              <img Post [paths]="post.imagePath" class="post-image-style">
+            </div>
+          </ng-container>
+          <ng-container *ngIf="post.title">
+            <div>
+              <img ProfilePhoto [paths]="post.imagePath" class="post-image-style">
+            </div>
+          </ng-container>
+          <div style="margin-left: 10px; margin-top: 5px; width: 100%">
+            <span><i style="color: red" class="fa-solid fa-heart"></i></span>
+            <span popover titleHtml='Likes <i style = "color: red" class="fa-solid fa-heart"></i>' [contentHtml]="getLikesList(post)" placement="bottom"  class="likes-style">{{post.likesCount}} likes</span>
+            <span (click)="getPostForImages(post)" class="likes-style"
+                  style="float: right; margin-right: 20px">{{post.commentCount}} comments</span>
+          </div>
+          <hr style="margin-top: 8px">
+          <div class="button-box">
+            <button (click)="likePost(post); post.liked = true" *ngIf="!post.liked" style="margin-left: 4px"
+                    class="home-button"><i class="fa-regular fa-heart"></i> Like
+            </button>
+            <button (click)="dislikePost(post); post.liked = false" *ngIf="post.liked" style="margin-left: 4px"
+                    class="home-button"><i style="color: red" class="fa-solid fa-heart bounceIn"></i> Like
+            </button>
+            <button (click)="getPostForImages(post)" style="margin-left: 1px" class="home-button"><i
+              class="fa-regular fa-comment"></i> Comment
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="d-flex my-3">
+    </div>
+  </div>
+</div>
+
+
+
+
+

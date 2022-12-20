@@ -1,0 +1,140 @@
+<div class="row m-0 justify-content-center">
+  <div class="col-12 col-xl-4 col-md-7 col-sm-8">
+    <div class="d-flex my-2 px-0 col-12 px-0" *ngIf="post">
+      <div class="post-box">
+        <div class="d-flex">
+          <img class="pp-style"
+               ProfilePhoto [paths]="post.pp">
+          <div style="position: inherit; margin-left: 7px">
+            <h6 class="profile-name">{{post.sender}}</h6>
+            <span class="createdAt">{{post.createdAt | date: 'MMM d y, h:mm a'}} <br></span>
+          </div>
+
+        </div>
+        <div>
+          <p class="paragraph-style">{{post.content}}</p>
+        </div>
+        <ng-container *ngIf="post.imagePath && !post.title">
+          <div>
+            <img Post [paths]="post.imagePath" class="img-responsive post-image-style">
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="post.title">
+          <div>
+            <img ProfilePhoto [paths]="post.imagePath" class="post-image-style">
+          </div>
+        </ng-container>
+
+
+        <ng-container *ngIf="post.videoPath">
+          <video [controls]="true" style="width: 100%">
+            <source Post [paths]="post.videoPath">
+          </video>
+        </ng-container>
+
+        <div style="margin-left: 10px; margin-top: 5px; width: 100%">
+          <span><i style="color: red" class="fa-solid fa-heart"></i></span>
+          <span popover titleHtml='Likes <i style = "color: red" class="fa-solid fa-heart"></i>'
+                [contentHtml]="getLikesList(post)" placement="bottom" class="likes-style">{{post.likesCount}}
+            likes</span>
+          <span class="likes-style" style="float: right; margin-right: 20px">{{allComments}} comments</span>
+        </div>
+        <hr style="margin-top: 8px">
+        <div class="button-box">
+          <button (click)="likePost(post); post.liked = true" *ngIf="!post.liked" style="margin-left: 4px"
+                  class="home-button">
+            <i class="fa-regular fa-heart"></i> Like
+          </button>
+          <button (click)="dislikePost(post); post.liked = false" *ngIf="post.liked" style="margin-left: 4px"
+                  class="home-button">
+            <i style="color: red" class="fa-solid fa-heart bounceIn"></i> Like
+          </button>
+
+
+          <button style="margin-left: 1px" class="home-button"><i
+            class="fa-regular fa-comment"></i> Comment
+          </button>
+        </div>
+
+
+        <div *ngIf="short[0]"
+             style="background-color: white; overflow-y: scroll; width: 100%; height: auto; max-height: 300px"
+             class="post-box">
+          <div *ngFor="let post of short; index as j">
+            <div class="d-flex my-3">
+              <img ProfilePhoto [paths]="post.pp" class="comm-pp-style">
+              <div *ngIf="post" class="comment-texts">
+                <span>{{post.sender}}</span>
+                <p
+                  style="margin-top: -3px;margin-left: 8px; font-size: 12px; font-weight: 250">
+                  {{post.createdAt | date: 'MMM d y, h:mm a'}}</p>
+                <p class="comm-txt">{{post.comment}}
+                  <span title="Like" (click)="like(post); post.liked = true" *ngIf="!post?.liked"
+                        class="like-response-btn"><i
+                    class="fa-regular fa-heart fa-xl"></i></span>
+                  <span title="Dislike" *ngIf="post?.liked" (click)="dislike(post); post.liked = false"
+                        class="like-response-btn"><i style="color: red"
+                                                     class="fa-solid fa-heart fa-xl"></i></span>
+                  <span title="Response" *ngIf="!post.clickTo" (click)="getResponse(post);post.clickTo = true"
+                        class="like-response-btn"><i
+                    class="fa-regular fa-comment-dots fa-xl"></i></span>
+                  <span title="Close" *ngIf="post.clickTo" (click)="post.clickTo = false" class="like-response-btn"><i
+                    class="fa-solid fa-x fa-xl"></i></span>
+                  <span (click)="deleteComment(post)" title="Delete Comment" *ngIf="user.username == post.sender"
+                        class="like-response-btn"><i
+                    class="fa-solid fa-eraser fa-xl"></i></span> |<span
+                    class="like-response-btn">{{post.likesCount}}
+                    likes <i class="fa-regular fa-face-laugh-beam"></i></span></p>
+
+
+                <div *ngIf="post.clickTo" class="mx-2 pb-2">
+                  <hr>
+                  <div *ngIf="post?.responses">
+                    <div class="d-flex" *ngFor="let res of post.responses">
+                      <img ProfilePhoto [paths]="res.pp" class="res-pp-style">
+                      <div class="res-box-style">
+                        <span>{{res?.sender?.username}}</span>
+                        <p
+                          style="margin-top: -3px;margin-left: 8px; font-size: 12px; font-weight: 250">
+                          {{res.createdAt | date: 'MMM d y, h:mm a'}}</p>
+                        <p class="res-response-style">{{res.response}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <form [formGroup]="responseForm" style="margin-top: 10px">
+                    <input class="response-input" placeholder="Response" formControlName="response">
+                    <button class="send-response-btn" (click)="sendResponse(post)">
+                      Send
+                    </button>
+                  </form>
+                  <p class="warning-text" *ngIf="nullName">{{nullName}}</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="text-center" style="width: 40%; margin: auto; background: transparent">
+          <a *ngIf="seeMore" (click)="seenMore()" class="m-auto more-text" style="text-decoration: none">See More <i
+            class="fa-solid fa-angles-down"></i></a>
+          <a *ngIf="seeLess" (click)="seenLess()" class="m-auto more-text" style="text-decoration: none">See Less <i
+            class="fa-solid fa-angles-up"></i></a>
+
+        </div>
+        <div class="bott">
+          <form [formGroup]="inputForm" class="comment-box">
+            <div class="mx-1 d-flex pb-1 comment-box" id="content">
+              <img *ngIf="user.imagePath" ProfilePhoto [paths]="user.imagePath" class="comment-pp">
+              <input class="comment-style" placeholder="Comment" formControlName="comment">
+              <button [disabled]="!inputForm.valid" (click)="sendComment()" class="btn send-btn">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

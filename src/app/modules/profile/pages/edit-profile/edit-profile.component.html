@@ -1,0 +1,68 @@
+<div class="row justify-content-center m-0">
+  <div class="col-xl-7 col-12 box px-0" style="height: auto; background-color: white"
+       *ngIf="user">
+    <div style="text-align: center">
+
+      <div class="cover-pp-wrapper">
+        <img *ngIf="!pathCover" CoverPhoto [paths]="user.coverP" class="img-responsive img-back">
+        <img *ngIf="pathCover" [src]="pathCover" class="img-responsive img-back">
+        <div class="change-cover-btn">
+          <i (click)="fileInputCover.click()" class="fa-solid fa-camera fa-2x"></i>
+          <input #fileInputCover id="image-cover-input" accept=".png, .gif, .jpeg, .jpg" style="visibility:hidden;"
+                 type="file" (change)="getCoverFile($event)"
+                 formenctype="multipart/form-data">
+        </div>
+      </div>
+
+      <div class="profile-picture-wrapper">
+        <img class="pp" ProfilePhoto [paths]="user.imagePath" *ngIf="!path">
+        <img *ngIf="path" [src]="path" class="pp">
+        <div class="change-photo-btn">
+          <i (click)="fileInput.click()" class="fa-solid fa-camera fa-2x"></i>
+          <input #fileInput id="image-input" accept=".png, .gif, .jpeg, .jpg" style="visibility:hidden;"
+                 type="file" (change)="getFile($event)"
+                 formenctype="multipart/form-data">
+        </div>
+      </div>
+
+
+      <h3 class="name">{{user.username}}</h3>
+
+      <div style=" margin-top: 20px">
+        <h6 class="bio-text"><b>Biography</b></h6>
+        <form [formGroup]="inputForm">
+          <textarea formControlName="bio" class="input-bio" name="" id="" cols="30" rows="10"
+                    placeholder="{{user.bio}}">{{user.bio}}</textarea>
+          <div class="birth-gender">
+            <div class="date-style-div">
+              <h6 class="bio-text"><b>Birthday</b></h6>
+              <input [(ngModel)]="user.birth" formControlName="birth" class="date-style" type="date" min="1920-12-31"
+                     max="{{date}}">
+            </div>
+            <div class="date-style-div">
+              <h6 class="bio-text"><b>Gender</b></h6>
+              <select formControlName="gender" [(ngModel)]="gender" class="gender-style">
+                <option>He</option>
+                <option>She</option>
+              </select>
+            </div>
+          </div>
+        </form>
+
+
+        <div>
+          <button routerLink="/profile" class="change-button-3 my-3"><i class="fa-solid fa-arrow-left-long"></i> Don't
+            Save
+          </button>
+          <button routerLink="/profile" (click)="SaveChanges()" class="change-button my-3">Save Changes <i
+            class="fa-regular fa-floppy-disk"></i></button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

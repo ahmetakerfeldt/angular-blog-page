@@ -1,0 +1,33 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <span class="write-post-text">Create Post</span>
+    <button (click)="modalService.dismiss()" class="btn-close exit-button"></button>
+  </div>
+  <div class="modal-body" *ngIf="user">
+    <div class="d-flex">
+      <img ProfilePhoto [paths]="user.imagePath" class="pp-styles">
+      <h6 class="username">{{user.username}}</h6>
+    </div>
+
+    <form [formGroup]="inputForm">
+      <ng-container>
+        <div id="content">
+                  <textarea maxlength="1370" formControlName="content" id="content-post" class="textarea-style" rows="5"
+                            placeholder="What do you want to talk about?">
+                  </textarea>
+          <p style="color: red; font-size: 12px; text-align: center; font-weight: 500" *ngIf="unSuccess && !inputForm.valid">{{unSuccess}}</p>
+        </div>
+      </ng-container>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <div style="margin-right: auto">
+      <button title="Share Image" (click)="imagePostModal()" class="share-others"><i
+        class="fa-solid fa-image"></i></button>
+      <button title="Share Video" (click)="videoPostModal()" style="margin-left: 10px" class="share-others"><i class="fa-solid fa-video"></i></button>
+    </div>
+    <button (click)="modalService.dismiss()" class="close-button">Close</button>
+    <button class="send-button" (click)="sharePost()" [disabled]="!inputForm.valid">Share Post</button>
+  </div>
+</div>

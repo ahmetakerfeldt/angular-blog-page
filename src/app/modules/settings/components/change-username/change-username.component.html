@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <span class="change-username-text">Change Username</span>
+  <button (click)="modalService.dismiss()" type="button" class="btn-close exit-button" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+</div>
+<div class="modal-body text-center">
+  <form [formGroup]="inputForm">
+    <input formControlName="username" class="inputs-style" placeholder="New Username">
+    <input formControlName="password" class="inputs-style" placeholder="Enter Your Password" type="password">
+  </form>
+  <div class="spinner-border text-primary my-1" role="status" *ngIf="spinner">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <p style="color: green; margin-top: 4px" *ngIf="success">{{success}}<i class="fa-solid fa-check"></i></p>
+  <p style="color: red; margin-top: 4px" *ngIf="unSuccess">{{unSuccess}}</p>
+</div>
+<div class="modal-footer">
+  <button (click)="modalService.dismiss()" class="close-button" data-bs-dismiss="modal">Close</button>
+  <button class="save-button" (click)="changeUsername()">Change</button>
+</div>

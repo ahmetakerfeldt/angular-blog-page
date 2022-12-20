@@ -1,0 +1,113 @@
+.input-style {
+  border: 1px solid #ffffff;
+  width: 100%;
+  height: 40px;
+  border-radius: 2px;
+  background: transparent;
+  padding-left: 10px;
+  color: white;
+
+
+  &::placeholder {
+    color: white;
+  }
+
+  &:focus {
+    outline: none;
+    color: white;
+  }
+
+}
+
+
+.eye-button {
+  background: transparent;
+  border: none;
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 7px
+}
+
+.secret-box {
+  border: 1px solid transparent;
+  width: 80%;
+  height: 50px;
+  margin: auto;
+  margin-top: 5px !important;
+  color: white;
+}
+
+.login-box {
+  margin-top: 120px;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.btn {
+  height: 40px;
+  width: 100%;
+  margin-top: 30px;
+  font-family: sans-serif;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: #1c1c78;
+  padding: 10px 40px;
+  border-radius: 2px;
+  box-shadow: 1px 2.9px 16px rgba(32, 73, 111, 0.4);
+  transition: 0.6s cubic-bezier(0.01, 1.69, 0.99, 0.94);
+
+  &:hover {
+    box-shadow: 3px 4.9px 16px rgb(116, 116, 188);
+    letter-spacing: 3px;
+  }
+
+  &:focus {
+  }
+
+  &--clicked {
+    transition: 0.6s cubic-bezier(0.01, 1.69, 0.99, 0.94);
+    padding: 15px 2px;
+    width: 50px;
+    color: transparent;
+    z-index: -10;
+  }
+}
+
+.color {
+  display: block;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  transition: 0.8s ease;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.expanded {
+  width: 200%;
+  padding-bottom: 200%;
+  height: auto;
+
+}
+
+$colors: (
+  blue: #1b8bf9,
+  orange: #FF6C19,
+  green: #41FF9F,
+  white: #f9f9f9
+);
+$i: 0.25s;
+@each $colorName, $color in $colors {
+
+  .color--#{$colorName} {
+    background-color: $color;
+    transition-delay: ($i);
+
+  }
+  $i: $i + 0.25s;
+}

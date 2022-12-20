@@ -1,0 +1,285 @@
+.pp {
+  background-color: white;
+  outline: white !important;
+  border: 4px solid white;
+  margin-top: -15%;
+  width: 30%;
+  height: 30%;
+  border-radius: 30%;
+  color: white;
+  left: 10px;
+}
+
+.box {
+  border-radius: 4px;
+  border: transparent !important;
+}
+
+.img-back {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  width: 100%;
+  height: auto;
+}
+
+.change-button {
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 45%;
+  height: 40px;
+  background-color: rgb(10, 102, 194);
+  color: rgb(255, 255, 255);
+  font-family: system-ui, -apple-system;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 18px;
+  border: 1px solid rgb(10, 102, 194);
+  border-radius: 6px;
+
+  &:hover {
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    background-color: #004182;
+  }
+
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid transparent;
+    color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.change-button-3 {
+  object-fit: none;
+  margin-top: 10px;
+  width: 45%;
+  height: 40px;
+  background-color: rgb(228, 230, 235);
+  color: rgb(28, 30, 33);
+  font-family: system-ui, -apple-system;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 18px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+
+  &:hover {
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    background-color: rgb(198, 199, 206);
+  }
+
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid transparent;
+    color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .change-button-3 {
+    width: 94%;
+    margin-left: 0;
+  }
+  .change-button {
+    width: 94%;
+    margin-left: 0;
+  }
+}
+
+.name {
+  margin-top: 10px;
+  font-family: -apple-system, system-ui, blinkMacSystem;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 500px) {
+  .name {
+    margin-top: 30px;
+  }
+}
+
+
+.bio-text {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+}
+
+.bio {
+  text-align: left !important;
+  padding: 15px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.link-style {
+  color: blue;
+  text-decoration: none;
+  font-weight: 450;
+}
+
+.system-pp {
+  border-bottom-left-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+  border: 1px solid #dedede;
+}
+
+
+.pp-change-btn {
+  border: none;
+  border-radius: 30%;
+  border: transparent;
+  background-color: white;
+  position: relative;
+  width: 4%;
+  height: 30px !important;
+  text-align: center !important;
+}
+
+.profile-picture-wrapper {
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .change-photo-btn {
+    position: absolute;
+
+    cursor: pointer;
+    right: -8px;
+    bottom: -8px;
+    text-align: right;
+
+    i {
+      border-radius: 50%;
+      padding: 8px;
+      background-color: white;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .profile-picture-wrapper {
+    width: 150px;
+    height: 150px;
+    bottom: -50px;
+  }
+}
+
+.cover-pp-wrapper {
+  width: 100%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .change-cover-btn {
+    position: absolute;
+    background-color: transparent !important;
+
+    cursor: pointer;
+    float: right!important;
+    top: 10px;
+    left: 10px;
+    text-align: right;
+
+    i {
+      border-radius: 50%;
+      padding: 8px;
+      background-color: white;
+    }
+  }
+}
+
+.input-bio {
+  width: 94%;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 3px;
+  resize: none;
+  padding: 15px;
+
+  &:focus {
+    border: 1px solid rgb(170, 170, 170);
+    outline: none;
+  }
+}
+
+.date-style {
+  width: 25%;
+  border: 1px solid #8181ff;
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 10px;
+  background: rgb(240, 240, 240);
+  height: 40px;
+
+  &:focus {
+    outline: none;
+  }
+
+
+}
+.gender-style {
+  width: 25%;
+  border: 1px solid #8181ff;
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 10px;
+  background: rgb(240, 240, 240);
+  height: 40px;
+
+  &:focus {
+    outline: none;
+  }
+
+
+}
+
+.date-style-div {
+  width: 50%;
+}
+
+.birth-gender {
+  display: flex;
+}
+
+@media only screen and (max-width: 500px) {
+  .date-style {
+    width: 80%;
+  }
+  .gender-style {
+    width: 80%;
+  }
+  .date-style-div {
+    width: 100%;
+  }
+  .birth-gender {
+    display: inline;
+  }
+
+}

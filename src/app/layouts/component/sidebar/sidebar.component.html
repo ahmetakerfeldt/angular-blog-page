@@ -1,0 +1,46 @@
+<nav id="navbar" class="navbar navbar-expand-lg bg-purple position-relative" *ngIf="width>1000">
+  <div class="container-fluid stars">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item links-style" style="margin-left: -15px!important;"><a
+          href="https://github.com/ahmetakerfeldt" target="_blank"><i>Blogger</i></a></li>
+        <li class="nav-item links-style"><a routerLink="/home">All Posts</a></li>
+        <li class="nav-item links-style"><a routerLink="/posts/videos">Videos</a></li>
+        <li class="nav-item links-style"><a routerLink="/posts/photos">Photos</a></li>
+        <li class="nav-item links-style"><a routerLink="/posts/other-posts">Other Posts</a></li>
+        <li class="nav-item links-style"><a routerLink="/posts/blogs">Blogs</a></li>
+      </ul>
+      <form class="d-flex navbar-links" role="search">
+        <ul>
+          <li><a routerLink="/profile" class="">My Profile</a></li>
+          <li><a routerLink="/login" class="btn-request"><i class="fas fa-sign-out" style="color: white"></i></a></li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div id="Harbour" *ngIf="width<500" style="background-color: rgb(240, 240, 240)" class="small">
+  <div class="row m-0 justify-content-center px-0">
+    <div class="col-12" style="width: 100%">
+      <div id="Port" (window:resize)="onResize($event)" >
+        <div   style="height: 50px; background-color: rgb(240, 240, 240)"  >
+          <ul class="">
+            <button class="icon-style" routerLink="/home"><i class="icon-style fa-solid fa-house fa-xl"></i></button>
+            <button class="icon-style" routerLink="/posts/videos"><i class="icon-style fa-solid fa-video fa-xl"></i></button>
+            <button class="icon-style" routerLink="/posts/photos"><i class="icon-style fa-solid fa-photo-film fa-xl"></i></button>
+            <button class="icon-style" routerLink="/posts/other-posts"><i class="icon-style fa-solid fa-keyboard fa-xl"></i></button>
+            <button disabled class="icon-style" routerLink="/posts/blogs"><i class="icon-style fa-solid fa-blog fa-xl"></i></button>
+            <button class="icon-style" routerLink="/profile"><i class="icon-style fa-solid fa-user fa-xl"></i></button>
+            <button class="icon-style" routerLink="/login"><i class="icon-style fas fa-sign-out fa-xl"></i></button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

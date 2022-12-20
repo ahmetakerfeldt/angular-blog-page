@@ -1,0 +1,5 @@
+<app-sidebar *ngIf="with"></app-sidebar>
+<div class="layout-container">
+  <router-outlet></router-outlet>
+</div>
+<app-sidebar *ngIf="with<=500"></app-sidebar>

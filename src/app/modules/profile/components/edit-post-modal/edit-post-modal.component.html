@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <span class="post-text">Edit Post</span>
+  <button (click)="modalService.dismiss()" type="button" class="btn-close exit-button" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+</div>
+<div class="modal-body text-center">
+  <form [formGroup]="inputForm">
+    <div id="contents">
+      <textarea *ngIf="!post.videoPath && !post.imagePath" maxlength="1500" formControlName="content"
+                id="content-textareaa" class="textarea-style" rows="5"
+                placeholder="{{post.content}}"></textarea>
+    </div>
+    <ng-container *ngIf="post.imagePath">
+      <div id="contenta">
+        <textarea maxlength="1500" formControlName="content" id="content-textareaq" class="textarea-style" rows="5"
+                  placeholder="{{post.content}}"></textarea>
+      </div>
+      <img *ngIf="post.imagePath && !path" style="margin-top: 20px" class="post-image" Post [paths]="post.imagePath">
+      <img *ngIf="path" style="margin-top: 20px" class="post-image" [src]="path">
+    </ng-container>
+
+    <ng-container *ngIf="post.videoPath">
+      <div id="contentb">
+        <textarea maxlength="1500" formControlName="content" id="content-textareas" class="textarea-style" rows="5"
+                  placeholder="{{post.content}}"></textarea>
+      </div>
+      <video *ngIf="!format" Post [paths]="post.videoPath" style="width: 100%" controls></video>
+      <video [src]="url" *ngIf="format==='video' && post.videoPath" style="width: 100%" controls></video>
+    </ng-container>
+
+    <label *ngIf="post.videoPath" for="video-input" class="post-button">Select New Video</label>
+    <input id="video-input" accept=".video/mp4" style="visibility:hidden;" type="file"
+           formenctype="multipart/form-data" (change)="getVideo($event)">
+
+
+    <label *ngIf="post.imagePath" for="image-input" class="post-button">Select New Image</label>
+    <input id="image-input" accept=".png, .gif, .jpeg, .jpg" style="visibility:hidden;" type="file"
+           formenctype="multipart/form-data" (change)="getNewFile($event)">
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modalService.dismiss()" class="close-button" data-bs-dismiss="modal">Close</button>
+  <button class="send-button" (click)="editPost(post)">Edit Post</button>
+</div>
