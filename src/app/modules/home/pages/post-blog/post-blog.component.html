@@ -7,8 +7,8 @@
       <form [formGroup]="inputForm">
         <angular-editor formControlName="html" [placeholder]="'Enter text here...'" [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
       </form>
-
     </div>
-
   </div>
+  <p style="color: white">  {{htmlContent}}
+  </p>
 </div>
