@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {DefaultLayoutComponent} from "./layouts/default-layout.component";
 
 const routes: Routes = [
@@ -11,7 +11,7 @@ const routes: Routes = [
 
   {
     path: '',
-    loadChildren: () => import('./modules/auth/auth.module').then((value)=> value.AuthModule)
+    loadChildren: () => import('./modules/auth/auth.module').then((value) => value.AuthModule)
   },
 
   {
@@ -20,20 +20,22 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./modules/home/home.module').then((value)=> value.HomeModule)
+        loadChildren: () => import('./modules/home/home.module').then((value) => value.HomeModule)
       },
       {
         path: 'posts',
-        loadChildren: () => import('./modules/posts/posts.module').then((value)=>value.PostsModule)
+        loadChildren: () => import('./modules/posts/posts.module').then((value) => value.PostsModule)
       },
       {
         path: '',
-        loadChildren: () => import('./modules/profile/profile.module').then((value)=>value.ProfileModule)
+        loadChildren: () => import('./modules/profile/profile.module').then((value) => value.ProfileModule)
+      },
+      {
+        path: '',
+        loadChildren: () => import('./modules/user-profile/user-profile.module').then((value) => value.UserProfileModule)
       },
     ]
   }
-
-
 
 
 ];
@@ -42,4 +44,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
