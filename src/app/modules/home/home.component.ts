@@ -15,8 +15,11 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
   allPosts: any[] = []
+  timeOut = false
   user: any
   likes: any
+  system: any
+  date = Date.now()
 
   constructor(private homeService: HomeService,
               private modalService: ModalService,
@@ -26,17 +29,21 @@ export class HomeComponent implements OnInit {
   }
 
   async ngOnInit() {
-
+    this.system = await this.profileService.getSystem()
     this.likes = await this.homeService.getLikes()
     this.user = await this.profileService.getUserInfo()
     return this.homeService.allPosts().then((data) => {
+      if (data?.length == 0) {
+        this.timeOut = true
+      } else {
+        this.timeOut = false
+      }
       this.allPosts = data;
       this.allPosts = this.allPosts.map((post: any) => {
         post.liked = post.PostsLikesModels?.length;
         return post;
       })
     })
-
   }
 
   openImagePostModal() {
@@ -108,10 +115,13 @@ export class HomeComponent implements OnInit {
     const likes = this.likes.filter((like: any) => like.postId === post.id);
 
     for (const like of likes) {
-      html += `<span style="color: blue" "> -${like.sender} <br/></span>`;
+      html += `<span style="color: blue" class="button-box" "> -${like.sender} <br/></span>`;
     }
 
     return html;
   }
 
+  goProfile(post: any) {
+    return this.router.navigate([`/user-profile`], {queryParams: {id: post.userId, user: post.sender}})
+  }
 }

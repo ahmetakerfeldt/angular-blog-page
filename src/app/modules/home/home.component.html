@@ -29,9 +29,10 @@
         <div class="post-box">
           <div class="d-flex">
             <img class="pp-style"
+                 (click)="goProfile(post)"
                  ProfilePhoto [paths]="post.pp">
             <div style="position: inherit; margin-left: 7px">
-              <h6 class="profile-name">{{post.sender}}</h6>
+              <h6 (click)="goProfile(post)" class="profile-name">{{post.sender}}</h6>
               <span class="createdAt">{{post.createdAt | date: 'MMM d y, h:mm a'}} <br></span>
             </div>
 
@@ -61,7 +62,9 @@
             <span><i style="color: red" class="fa-solid fa-heart"></i></span>
 
 
-            <span popover titleHtml= 'Likes <i style = "color: red" class="fa-solid fa-heart"></i>' [contentHtml]="getLikesList(post)" placement="top" class="likes-style">{{post.likesCount}} likes</span>
+            <span popover titleHtml='Likes <i style = "color: red" class="fa-solid fa-heart"></i>'
+                  [contentHtml]="getLikesList(post)" placement="top" class="likes-style">{{post.likesCount}}
+              likes</span>
             <span (click)="getPost(post)" class="likes-style"
                   style="float: right; margin-right: 20px">{{post.commentCount}} comment</span>
           </div>
@@ -79,6 +82,29 @@
               class="fa-regular fa-comment"></i> Comment
             </button>
           </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="timeOut && system">
+      <div class="d-flex my-2 px-0 col-12 px-0">
+        <div class="post-box">
+          <div class="d-flex">
+            <img ProfilePhoto class="pp-style" [paths]="system.pp">
+            <div style="position: inherit; margin-left: 7px">
+              <h6 class="profile-name">{{system.sender}}</h6>
+              <span class="createdAt">{{date| date: 'MMM d, y, h:mm:ss a'}}<br></span>
+            </div>
+
+          </div>
+          <div>
+            <p class="paragraph-style">{{system.content}}</p>
+          </div>
+          <ng-container>
+            <div>
+              <img Post class="post-image-style" [paths]="system.contentP">
+            </div>
+          </ng-container>
         </div>
       </div>
     </ng-container>
