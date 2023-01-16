@@ -66,7 +66,7 @@ export class EditProfileComponent implements OnInit {
 
     values.coverP = this.user.coverP || null;
     values.imagePath = this.user.imagePath || null;
-    values.gender =this.inputForm.value.gender || null;
+    values.gender = this.inputForm.value.gender || null;
     values.birth = this.inputForm.value.birth || null;
 
 
