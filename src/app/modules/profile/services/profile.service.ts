@@ -27,7 +27,7 @@ export class ProfileService {
   }
 
   async updateProfile(body: any) {
-    return this.http.patch('/edit-profile', body)
+    return this.http.post('/edit-profile', body)
   }
 
   async editPost(body: any) {

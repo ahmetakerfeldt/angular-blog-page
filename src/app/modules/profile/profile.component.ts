@@ -100,7 +100,6 @@ export class ProfileComponent implements OnInit {
   getPost(post: any) {
     this.postsService.post = post
     return this.router.navigate(['/posts/comments'], {queryParams: {id: post.id}})
-
   }
 
   async likePost(post: any) {

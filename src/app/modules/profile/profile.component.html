@@ -129,7 +129,8 @@
           </ng-container>
           <div style="margin-left: 10px; margin-top: 5px; width: 100%">
             <span><i style="color: red" class="fa-solid fa-heart"></i></span>
-            <span popover titleHtml='Likes <i style = "color: red" class="fa-solid fa-heart"></i>' [contentHtml]="getLikesList(post)" placement="bottom"
+            <span popover titleHtml='Likes <i style = "color: red" class="fa-solid fa-heart"></i>'
+                  [contentHtml]="getLikesList(post)" placement="bottom"
                   class="likes-style">{{post.likesCount}} likes</span>
             <span (click)="getPost(post)" class="likes-style"
                   style="float: right; margin-right: 20px">{{post.commentCount}} comment</span>
@@ -168,9 +169,9 @@
           <div>
             <p class="paragraph-style">{{user.gender}} was born in {{user.birth | date: 'dd MMMM YYYY'}}</p>
           </div>
-          <div class="text-center p-2">
-            <p><i class="fa-regular fa-face-smile fa-8x"></i></p>
-          </div>
+          <ng-container>
+            <img src="https://giffiles.alphacoders.com/209/209223.gif" class="post-image-style">
+          </ng-container>
         </div>
       </div>
     </div>
