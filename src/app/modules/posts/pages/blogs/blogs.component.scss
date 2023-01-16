@@ -1,10 +1,22 @@
 .html-style {
   padding: 10px;
   border-radius: 6px;
-  font-weight: 500!important;
+  font-weight: 500 !important;
 }
 
 .html-box-style {
   border: none;
-  border-radius: 10px!important;
+  border-radius: 10px !important;
+}
+
+.blogs-box {
+  margin-top: 20px;
+  background-color: white;
+  width: 100%;
+  height: auto;
+}
+
+.name-writer {
+  width: 10px;
+  position: relative;
 }

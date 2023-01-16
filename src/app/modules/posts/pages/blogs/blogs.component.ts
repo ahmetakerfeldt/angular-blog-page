@@ -10,6 +10,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class BlogsComponent implements OnInit {
   html: any
   try: any
+  sharedUser:any
 
   constructor(private postService: PostService, private sanitizer: DomSanitizer) {
   }

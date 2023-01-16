@@ -2,7 +2,15 @@
 <div class="row justify-content-center m-0">
 
   <div class="col-11 col-xl-6 col-md-8 col-sm-8 html-box-style">
-    <div class="html-style" *ngFor="let htmls of html" style="margin-top: 20px; background-color: white" [innerHTML]="htmls.html"></div>
+    <div  class="html-style blogs-box" *ngFor="let htmls of html">
+      <div>
+        <img style="width: 50px; height: 50px" ProfilePhoto [paths]="htmls.pp">
+        <span  class="mx-3 name-writer">{{htmls.writer}}</span>
+        <span>{{htmls.createdAt| date: 'MMM d, y, h:mm' }}</span>
+      </div>
+      <div [innerHTML]="htmls.html">
+      </div>
+    </div>
   </div>
 </div>
 
