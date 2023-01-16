@@ -62,6 +62,7 @@ export class PostService {
   async like(body: any) {
     return this.http.post('/like', body)
   }
+
   async dislike(body: any) {
     return this.http.post('/dislike', body)
   }
