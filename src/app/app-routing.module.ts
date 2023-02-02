@@ -30,10 +30,6 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./modules/profile/profile.module').then((value) => value.ProfileModule)
       },
-      {
-        path: '',
-        loadChildren: () => import('./modules/user-profile/user-profile.module').then((value) => value.UserProfileModule)
-      },
     ]
   }
 
